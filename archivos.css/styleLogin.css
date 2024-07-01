@@ -1,0 +1,266 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-family:Roboto italic;
+}
+
+.header{
+    position: absolute;
+    width: 100%;
+    height: 15%;
+    margin-top: 1%;
+}
+
+/*el side-var*/
+.nav{
+    position: fixed;
+    z-index: 3;
+    top: 2%;
+    left: 10%;
+    width:80%;
+    border-radius: 12px;
+    background-color: rgb(114, 53, 0) ;
+    
+}
+
+.navAux-1{
+    position: absolute;
+    display: inline-block;
+    width: 60%;
+    height: 100%;
+    padding-top: 18px;
+    padding-left: 10px;
+}
+
+.navAux-2{
+    position: absolute;
+    right: 0;
+    display: inline-block;
+    width: 35%;
+    height: 100%;
+    text-align: right;
+}
+
+
+.navAux-1 a{
+    display: inline-block;
+    margin-bottom: 10px;
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    font-size: 17px;
+    margin-right: 40px;
+}
+
+.navAux-2 a{
+    display: inline-block;
+    padding-top: 18px;
+    padding-bottom: 20px;
+    margin-right:20px;
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    font-size: 17px;
+}
+.icono{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    margin-right: 10px;
+    padding-left: 10px;
+    padding-top: 8px;
+}
+
+a .icono{
+    width: 40px;
+    height: 40px;
+}
+.nav a:hover{
+    color: #d07412;
+}
+/*fin side-var*/
+
+.main{
+    position: relative;
+    width: 100%;
+    height: 800px;
+    background-color: #A88772;
+}
+
+.main img{
+    width: 100%;
+    height: 100%;
+}
+
+/*el login*/
+.section-login{
+    position: absolute;
+    top: 12%;
+    left: 300px;
+    width: 29%;
+    height: 72%;
+    background-color:#f9f9f9;
+}
+
+.mensaje-error {
+    height: 20px;
+    width: 300px;
+    margin-left: 65px;  
+    margin-top: 10px;
+    color: rgb(196, 127, 0);
+    font-size: 17px;
+    font-weight: bold;
+    visibility:hidden;
+  }
+
+form h1{
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+form h5{
+    margin-left:65px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+form input,textarea{
+    width: 300px;
+    height: 40px;
+    margin-left:65px;
+    margin-bottom: 10px;
+}
+form .input-text{
+    border: none;
+    border-bottom:2px solid rgb(163, 88, 13);
+}
+
+/*mensaje de agradecimiento*/
+form .input-boton,h5:last-child{
+    display:inline-block;
+
+}
+
+form textarea{
+    display: block;
+    min-width: 300px;
+    min-height: 70px;
+    resize: none;
+}
+
+
+form .input-boton{
+    width: 150px;
+    height: 30px;
+    border-radius: 15px;
+    border: #cecac5;
+    background-color:rgb(163, 88, 13);
+    color: #f9f9f9;
+    margin-top: 10px;
+    margin-left: 140px;
+}
+
+/*final login*/
+
+
+/*playlist*/
+
+.conteiner-playlist{
+    position: absolute;
+    top: 75px;
+    right: 300px;
+    width: 300px;
+    height: 600px;
+}
+
+.conteiner-playlist h2{
+    color: #f9f9f9;
+    text-align: center;
+}
+
+.music-item{
+    border-radius:12px;
+    margin:0px;
+    width: 100%;
+    height: 80px;
+}
+
+
+/*fin playlist*/
+
+
+
+
+/*footer*/
+.footer{
+    position: relative;
+    background-color: #A47B47;
+    width: 100%;
+    height: 355px;
+    margin: auto 0;
+}
+
+.footer-izquierdo{
+    position: absolute;
+    left: 0;
+    width: 40%;
+    height: 100%;
+}
+
+.footer-izquierdo h3{
+    margin-top: 50px;
+    margin-left: 120px;
+}
+
+.footer-izquierdo p{
+    width: 500px;
+    height: 100px;
+    margin-left: 120px;
+    text-align: left;
+    color: #e0e0e0;
+    font-weight: bold;
+}
+
+.footer-medio{
+    position: absolute;
+    left: 40%;
+    width: 30%;
+    height: 100%;
+    font-weight: bold;
+}
+
+.footer-medio h3{
+    margin-top: 50px;
+    margin-left: 100px;
+}
+
+.footer-medio ul li{
+    margin-left: 62px;
+    list-style-type: none;
+    margin-top:10px;
+}
+
+.footer-medio a{
+    text-decoration: none;
+    color: #e0e0e0;
+}
+
+.footer-medio a:hover{
+    color: #cecac5;
+}
+
+.footer-derecho{
+    position: absolute;
+    right: 0;
+    width: 30%;
+    height: 100%;
+    text-align: left;
+}
+
+.footer-derecho h3{
+    margin-top: 50px;
+}
+
+.footer-derecho a img{
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
