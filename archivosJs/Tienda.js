@@ -15,37 +15,6 @@ function aparecerCarrito(){
     }
 }
 
-function pagarCompra(){
-  var modal = document.getElementById('modal')
-  const totalPagar = document.querySelector('.total-pagar');
-
-  if(modal.style.visibility === "hidden" && totalPagar.textContent == '$0'){
-    modal.style.visibility = "hidden";
-  }else{
-    modal.style.visibility = "visible";
-  }
-
-}
-
-function Cancelar(){
-  var modal = document.getElementById('modal');
-  
-  modal.style.visibility = "hidden";
-  anio.style.border = "1px solid light-dark(rgb(118, 118, 118), rgb(133, 133, 133))";
-  anio.value = ""; 
-  mes.style.border = "1px solid light-dark(rgb(118, 118, 118), rgb(133, 133, 133))";
-  mes.value  = "";
-  documento.style.border = "1px solid light-dark(rgb(118, 118, 118), rgb(133, 133, 133))";
-  documento.value = "";
-  tarjeta.style.border = "1px solid light-dark(rgb(118, 118, 118), rgb(133, 133, 133))";
-  tarjeta.value = "";
-  nombre.style.border = "1px solid light-dark(rgb(118, 118, 118), rgb(133, 133, 133))";
-  nombre.value = "";
-  codigoSeguridad.style.border = "1px solid light-dark(rgb(118, 118, 118), rgb(133, 133, 133))";
-  codigoSeguridad.value = "";
-}
-
-
 
 function aparecerMenu(){
   var arrayMenu = document.getElementsByClassName('opciones');
@@ -71,6 +40,161 @@ function aparecerMenu(){
 
 
 
+const productoFila = document.querySelector('.row-product');
+const modal = document.querySelector('.productos');
+const listaDeProductos = document.querySelector('.container-items');
+
+let valorTotal = document.querySelector('.total-pagar');
+let valorTotalModal = document.querySelector('.modal-item .total-pagar'); 
+let todoLosProductos = [];
+// Añade el producto desde el evento click con el botón
+
+listaDeProductos.addEventListener('click', e => {
+    if (e.target.classList.contains('btn-add-cart')) {
+        const producto = e.target.parentElement;
+
+        const infoProducto = {
+            cantidad: 1,
+            titulo: producto.querySelector('h2').textContent,
+            precio: producto.querySelector('p').textContent
+        };
+
+        var i = 0;
+        var existe = false;
+
+        console.log(todoLosProductos);
+        while (i < todoLosProductos.length && !existe) {
+            if (todoLosProductos[i].titulo === infoProducto.titulo) {
+                existe = true;
+            } else {
+                i++;
+            }
+        }
+
+        if (existe) {
+          //Se incrementa la cantidad del producto existente en 1
+            const productos = todoLosProductos.map(objProducto => {
+                if (objProducto.titulo === infoProducto.titulo) {
+                    objProducto.cantidad++;
+                    return objProducto;
+                } else {
+                    return objProducto;
+                }
+            });
+            //propaga el producto con la cantidad aumentada
+            todoLosProductos = [...productos];
+        } else {
+          //mete al final de la lista el infoProducto
+            todoLosProductos = [...todoLosProductos, infoProducto];
+        }
+
+        mostrarProductoFila();
+    }
+});
+
+// Borra la fila de productos del carrito 
+productoFila.addEventListener('click', (evento) => {
+    if (evento.target.classList.contains('icon-close')) {
+        const producto = evento.target.parentElement;
+        const titulo = producto.querySelector('p').textContent;
+
+        //crea un aray nuevo con productos que no tengan el mismo titulo
+        todoLosProductos = todoLosProductos.filter(producto => producto.titulo !== titulo);
+        mostrarProductoFila();
+    }
+});
+
+
+// Borra la fila de productos del modal
+modal.addEventListener('click', (evento) => {
+
+    if (evento.target.classList.contains('icon-close')) {
+        const producto = evento.target.parentElement;
+        const titulo = producto.querySelector('p').textContent;
+
+        //crea un aray nuevo con productos que no tengan el mismo titulo
+        todoLosProductos = todoLosProductos.filter(producto => producto.titulo !== titulo);
+
+        mostrarProductoFila();
+
+        //para que cierre el modal cuando se elimine todos los productos
+        if(todoLosProductos.length == 0) {
+          Cancelar();
+        }
+    }
+
+});
+
+
+// Pone el elemento dentro del HTML
+const mostrarProductoFila = () => {
+    // Limpiar el contenido fila
+    productoFila.innerHTML = '';
+    // Limpiar también el modal
+    modal.innerHTML = ''; 
+
+    let total = 0;
+
+    for (let i = 0; i < todoLosProductos.length; i++) {
+        const producto = todoLosProductos[i];
+
+        const containerProducto = document.createElement('div');
+        containerProducto.classList.add('cart-product');
+
+        containerProducto.innerHTML = 
+        `<div class="info-cart-product">
+           <span class="cantidad-producto-carrito">${producto.cantidad}</span>
+           <p class="titulo-producto-carrito">${producto.titulo}</p>
+           <span class="precio-producto-carrito">${producto.precio}</span>
+           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon-close"> <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+        </div>`;
+
+        // Añade el producto al div donde esta el carrito
+        productoFila.append(containerProducto);
+
+        const cloneProduct = containerProducto.cloneNode(true);
+        cloneProduct.classList.remove('cart-product');
+        cloneProduct.classList.add('producto');
+
+        // Añade el producto a productoFila del div dentro del modal
+        modal.append(cloneProduct);
+
+        total += parseInt(producto.cantidad * producto.precio.slice(1));
+    }
+    valorTotal.innerText = `$${total}`;
+    valorTotalModal.innerText = `$${total}`; 
+
+};
+
+function pagarCompra(){
+  var modal = document.getElementById('modal')
+  const totalAPagar = document.querySelector('.total-pagar');
+
+  if(modal.style.visibility === "hidden" && totalAPagar.textContent == '$0'){
+    modal.style.visibility = "hidden";
+  }else{
+    modal.style.visibility = "visible";
+  }
+
+}
+
+function Cancelar(){
+  var modal = document.getElementById('modal');
+  
+  modal.style.visibility = "hidden";
+  anio.style.border = "1px solid light-dark(rgb(118, 118, 118), rgb(133, 133, 133))";
+  anio.value = ""; 
+  mes.style.border = "1px solid light-dark(rgb(118, 118, 118), rgb(133, 133, 133))";
+  mes.value  = "";
+  documento.style.border = "1px solid light-dark(rgb(118, 118, 118), rgb(133, 133, 133))";
+  documento.value = "";
+  tarjeta.style.border = "1px solid light-dark(rgb(118, 118, 118), rgb(133, 133, 133))";
+  tarjeta.value = "";
+  nombre.style.border = "1px solid light-dark(rgb(118, 118, 118), rgb(133, 133, 133))";
+  nombre.value = "";
+  codigoSeguridad.style.border = "1px solid light-dark(rgb(118, 118, 118), rgb(133, 133, 133))";
+  codigoSeguridad.value = "";
+}
 
 function pagoRealizado(){
 
@@ -100,10 +224,7 @@ function pagoRealizado(){
 }
 
 
-
-
 function validarTarjeta(){
- 
   var todoSonValidos = 0;
 
   if(validarNumeroTarjeta()){
@@ -127,7 +248,6 @@ function validarTarjeta(){
   }else{
     return false;
   }
-
 
 }
 
@@ -178,6 +298,7 @@ function validarFechas() {
   anoDosCifras.toString().padStart(2, '0');
 
   var fechaCorrecta = true;
+
   if (mes.value < 1 || mes.value > 12) {
       mes.style.border = "1px solid red";
       fechaCorrecta = false;
@@ -209,130 +330,7 @@ function validarCodigoSeguridad() {
 }
 
 
-const productoFila = document.querySelector('.row-product');
-const modal = document.querySelector('.productos');
-const listaDeProductos = document.querySelector('.container-items');
 
-let valorTotal = document.querySelector('.total-pagar');
-let valorTotalModal = document.querySelector('.modal-item .total-pagar'); 
-let todoLosProductos = [];
-
-// Añade el producto desde el evento click con el botón
-listaDeProductos.addEventListener('click', e => {
-    if (e.target.classList.contains('btn-add-cart')) {
-      //Obtenemos el nodo del padre
-        const producto = e.target.parentElement;
-
-        const infoProducto = {
-            cantidad: 1,
-            //Obtenemos los hijos del padre
-            titulo: producto.querySelector('h2').textContent,
-            precio: producto.querySelector('p').textContent
-        };
-
-        var i = 0;
-        var existe = false;
-
-        //busca los productos que sean iguales 
-        while (i < todoLosProductos.length && !existe) {
-            if (todoLosProductos[i].titulo === infoProducto.titulo) {
-                existe = true;
-            } else {
-                i++;
-            }
-        }
-
-        if (existe) {
-          //Se incrementa la cantidad del producto existente en 1
-            const productos = todoLosProductos.map(objProducto => {
-                if (objProducto.titulo === infoProducto.titulo) {
-                    objProducto.cantidad++;
-                    return objProducto;
-                } else {
-                    return objProducto;
-                }
-            });
-            //propaga el producto con la cantidad aumentada
-            todoLosProductos = [...productos];
-        } else {
-          //mete al final de la lista el infoProducto
-            todoLosProductos = [...todoLosProductos, infoProducto];
-        }
-
-        mostrarProductoFila();
-    }
-});
-
-// Borra la fila de productos del carrito 
-productoFila.addEventListener('click', (evento) => {
-    if (evento.target.classList.contains('icon-close')) {
-        const producto = evento.target.parentElement;
-        const titulo = producto.querySelector('p').textContent;
-
-        //crea un aray nuevo con productos que no tengan el mismo titulo
-        todoLosProductos = todoLosProductos.filter(producto => producto.titulo !== titulo);
-        mostrarProductoFila();
-    }
-});
-
-// Borra la fila de productos del modal
-modal.addEventListener('click', (evento) => {
-
-    if (evento.target.classList.contains('icon-close')) {
-        const producto = evento.target.parentElement;
-        const titulo = producto.querySelector('p').textContent;
-
-        //crea un aray nuevo con productos que no tengan el mismo titulo
-        todoLosProductos = todoLosProductos.filter(producto => producto.titulo !== titulo);
-        mostrarProductoFila();
-
-        //para que cierre el modal cuando se elimine todos los productos
-        if(todoLosProductos.length == 0) {
-          Cancelar();
-        }
-    }
-
-});
-
-// Pone el elemento dentro del HTML
-const mostrarProductoFila = () => {
-    // Limpiar el contenido fila
-    productoFila.innerHTML = '';
-    // Limpiar también el modal
-    modal.innerHTML = ''; 
-
-    let total = 0;
-
-    for (let i = 0; i < todoLosProductos.length; i++) {
-        const producto = todoLosProductos[i];
-
-        const containerProduct = document.createElement('div');
-        containerProduct.classList.add('cart-product');
-
-        containerProduct.innerHTML = `
-        <div class="info-cart-product">
-           <span class="cantidad-producto-carrito">${producto.cantidad}</span>
-           <p class="titulo-producto-carrito">${producto.titulo}</p>
-           <span class="precio-producto-carrito">${producto.precio}</span>
-           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon-close"> <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
-        </div>
-        `;
-
-        // Añade el producto al div donde esta el carrito
-        productoFila.append(containerProduct);
-
-        const cloneProduct = containerProduct.cloneNode(true);
-        cloneProduct.classList.remove('cart-product');
-        cloneProduct.classList.add('producto');
-
-        // Añade el producto a productoFila del div dentro del modal
-        modal.append(cloneProduct);
-
-        total += parseInt(producto.cantidad * producto.precio.slice(1));
-    }
-    valorTotal.innerText = `$${total}`;
-    valorTotalModal.innerText = `$${total}`; 
-};
 
 
 

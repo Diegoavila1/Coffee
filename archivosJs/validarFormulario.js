@@ -1,34 +1,40 @@
 
 
 //onsubmit 
-function validarFormulario(valorNombre,valorApellido,valorEmail,event){
+function validaFormulario(valorNombre,valorApellido,valorEmail,event){
     event.preventDefault();
     var form = document.getElementById('formulario');
 
-    if (validarTodo(valorNombre,valorApellido,valorEmail)) {
+    if (validaTodosLosCampos(valorNombre,valorApellido,valorEmail)) {
       form.submit();
     }
 
 };
 
 
-function validarTodo(valorNombre,valorApellido,valorEmail){
+function validaTodosLosCampos(valorNombre,valorApellido,valorEmail){
 
     var bandera = true;
 
-    if(!validarTexto('nombre')){
+    if(!validaTexto('nombre')){
         document.getElementById(valorNombre).style.visibility = 'visible';
         bandera = false;
+    }else{
+        document.getElementById(valorNombre).style.visibility = 'hidden';
     }
 
-    if(!validarTexto('apellido')){
+    if(!validaTexto('apellido')){
         document.getElementById(valorApellido).style.visibility = 'visible';  
         bandera = false;
+    }else{
+        document.getElementById(valorApellido).style.visibility = 'hidden';
     }
 
-    if(!validarEmail('email')){
+    if(!validaEmail('email')){
         document.getElementById(valorEmail).style.visibility = 'visible';  
         bandera = false;
+    }else{
+        document.getElementById(valorEmail).style.visibility = 'hidden';
     }
 
     return bandera;
@@ -36,7 +42,7 @@ function validarTodo(valorNombre,valorApellido,valorEmail){
 
     
 
-function validarTexto(idText){
+function validaTexto(idText){
 
     var elemento = document.getElementById(idText);
     var valor = elemento.value;
@@ -51,9 +57,10 @@ function validarTexto(idText){
     }
 }
 
-function validarEmail(idEmail){
+function validaEmail(idEmail){
     var elemento = document.getElementById(idEmail);
     var valor = elemento.value;
+
     //carecteres regulares
     var caracteresPermitidos = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
 
