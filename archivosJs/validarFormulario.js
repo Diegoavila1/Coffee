@@ -1,6 +1,6 @@
 
 
-
+//onsubmit 
 function validarFormulario(valorNombre,valorApellido,valorEmail,event){
     event.preventDefault();
     var form = document.getElementById('formulario');
@@ -40,6 +40,8 @@ function validarTexto(idText){
 
     var elemento = document.getElementById(idText);
     var valor = elemento.value;
+
+    //carecteres regulares
     var caracteresPermitidos = /^[a-zA-ZÑñÁáÉéÍíÓóÚúÜü\s]+$/;
 
     if (caracteresPermitidos.test(valor)) {
@@ -52,6 +54,7 @@ function validarTexto(idText){
 function validarEmail(idEmail){
     var elemento = document.getElementById(idEmail);
     var valor = elemento.value;
+    //carecteres regulares
     var caracteresPermitidos = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
 
     if (caracteresPermitidos.test(valor)){
@@ -61,8 +64,6 @@ function validarEmail(idEmail){
     }
 }
 
-function validarTextarea(idTextarea){
 
-}
 
   

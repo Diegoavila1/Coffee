@@ -6,7 +6,6 @@ var tarjeta = document.getElementById('numero-input');
 var codigoSeguridad = document.getElementById('cvv');
 
 function aparecerCarrito(){
-
     var carritoEscondido = document.getElementById('carrito-escondido');
 
     if(carritoEscondido.style.visibility === "hidden"){
@@ -186,7 +185,7 @@ function validarFechas() {
       mes.style.border = "1px solid light-dark(rgb(118, 118, 118), rgb(133, 133, 133))";
   }
 
-  if(anio.value < 19 || anio.value > anoDosCifras) {
+  if(anio.value < 19 || anio.value <= anoDosCifras) {
       anio.style.border = "1px solid red";
       fechaCorrecta = false;
   }else{
