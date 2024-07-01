@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+
+    <link rel="icon" href="imagenesTienda/icono-carrito.png">
+    <link rel="stylesheet" href="archivos.css/style.css" >
+
+    <script src="archivosJs/carrusel.js"></script>
+    
+    <title>Coffee</title>
+  </head>
+  <body>
+
+    <header class="header">
+
+      <nav class="nav">
+        <a href="index.html"><img class="icono" src="imagenesTienda/icono-carrito.png" alt=""></a>
+        <div class="navAux-1">
+            <a href="tienda.html">Tienda</a>
+            <a href="index.html#seccionRecomendaciones">Recomendaciones</a>
+            <a href="sobreNosotros.html">Sobre Nosotros</a>
+        </div>
+        <div class="navAux-2">
+            <a href="login.html">Contactanos</a>
+        </div>
+      </nav>
+      
+    </header>
+
+    <div class="container-coffe">
+      <img class="imgFondoCafeteria" src="imagenes/imgCabecera.jpg" alt="imagen de cafeteria">
+         
+      <article class="articleEncabezado">
+        <h1>Coffee.</h1>
+      </article>
+
+    </div>
+
+    <main>
+      <section id="seccionRecomendaciones">
+        <div class="carrusel">
+          <h2>Recomendaciones</h2>
+          <div class="carrusel-imagenes">
+              <img src="imagenesTienda/alfajores-colores.jpg" alt="" class="carousel-item" onclick="redirigir()">
+              <img src="imagenesTienda/taza_galletitas.jpg" alt="" class="carousel-item" onclick="redirigir()">
+              <img src="imagenesTienda/cheesecake.jpg" alt="" class="carousel-item" onclick="redirigir()">
+              <img src="imagenesTienda/cafeColombiano.jpg" alt="" class="carousel-item" onclick="redirigir()">
+              <img src="imagenesTienda/cafeTN.jpg" alt="" class="carousel-item" onclick="redirigir()">
+              <img src="imagenesTienda/chocotorta.jpg" alt=""  class="carousel-item" onclick="redirigir()">
+
+          </div>
+          <button class="siguiente">&#10095;</button>
+          <button class="anterior">&#10094;</button>
+      </div>
+      </section>
+
+    </main>
+
+    <footer class="footer">
+      <div class="footer-izquierdo">
+        <h3>Coffee</h3>
+        <p>Disfruta de un café delicioso y un ambiente acogedor en nuestra cafetería. <br> 
+          Te ofrecemos una gran variedad de bebidas, sándwiches, ensaladas y postres. 
+          Perfecto para trabajar, estudiar o simplemente relajarse con amigos <br>
+          <br>
+          © Coffee 2024
+        
+        </p>
+
+      </div>
+      <div class="footer-medio">
+        <h3>Sobre Nosotros</h3>
+        <ul>
+          <li><a href="nuestrasRecetas.html">Nuestras Recetas</a></li>
+          <li><a href="sobreNosotros.html">¿Donde encontrarnos?</a></li>
+          <li><a href="#">Comunidad</a></li>
+          <li><a href="login.html">Contactanos</a></li>
+        </ul>
+      </div>
+      <div class="footer-derecho">
+        <h3>Redes</h3>
+          <a href="https://www.facebook.com/"><img src="imagenes/facebook.png" alt=""></a>
+          <a href="https://x.com/?lang=es"><img src="imagenes/gorjeo.png" alt=""></a>
+          <a href="https://www.instagram.com/"><img src="imagenes/instagram.png" alt=""></a>
+          <a href="https://www.whatsapp.com/?lang=es_LA"><img src="imagenes/whatsapp.png" alt=""></a>
+      </div>
+    </footer>
+  </body>
+</html>

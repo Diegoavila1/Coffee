@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="archivos.css/styleLogin.css" >
+    <link rel="icon" href="imagenesTienda/icono-carrito.png">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+
+    <script src="archivosJs/validarFormulario.js"></script>
+
+    <title>Coffe - Contactanos</title>
+</head>
+<body>
+    <header class="header">
+
+      <nav class="nav">
+        <a href="index.html"><img class="icono" src="imagenesTienda/icono-carrito.png" alt=""></a>
+        <div class="navAux-1">
+            <a href="tienda.html">Tienda</a>
+            <a href="index.html#seccionRecomendaciones">Recomendaciones</a>
+            <a href="sobreNosotros.html">Sobre Nosotros</a>
+        </div>
+        <div class="navAux-2">
+            <a href="login.html">Contactanos</a>
+        </div>
+      </nav>
+        
+      </header>
+      <main class="main">
+        <img src="imagenes/imgLogin.jpg" alt="">
+        <section class="section-login">
+            <form id="formulario" onsubmit="return validarFormulario('errorNombre','errorApellido','errorEmail',event);">
+                <h1>Contactanos</h1>
+                <h5>Nombre</h5>
+                <input id ="nombre" class="input-text" type="text" minlength="3" maxlength="50" >
+                <span id="errorNombre" class="mensaje-error">Ingreso incorrectamente el nombre.</span>
+                <h5>Apellido</h5>
+                <input id="apellido" class="input-text" type="text" minlength="3" maxlength="50" >
+                <span id="errorApellido" class="mensaje-error">Ingreso incorrectamente el apellido.</span>
+                <h5>Email *</h5>
+                <input id="email" class="input-text" type="email" >
+                <span id="errorEmail" class="mensaje-error">Ingreso incorrectamente el email.</span >
+                <h5>Escriba un mensaje</h5>
+                <textarea minlength="10" ></textarea>
+                <input id="enviar" class="input-boton" type="submit"> 
+            </form>
+        </section>
+
+        <div class="conteiner-playlist">
+          <h2>Nuestra playlist</h2>
+          <iframe class="music-item"  src="https://open.spotify.com/embed/track/5cF0dROlMOK5uNZtivgu50?utm_source=generator&theme=0"  frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+          <iframe class="music-item"  src="https://open.spotify.com/embed/track/1zi7xx7UVEFkmKfv06H8x0?utm_source=generator"  frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+          <iframe class="music-item" src="https://open.spotify.com/embed/track/06KyNuuMOX1ROXRhj787tj?utm_source=generator"  frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+          <iframe class="music-item" src="https://open.spotify.com/embed/track/6DCZcSspjsKoFjzjrWoCdn?utm_source=generator"  frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+          <iframe class="music-item" src="https://open.spotify.com/embed/track/2GyA33q5rti5IxkMQemRDH?utm_source=generator"  frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+          <iframe class="music-item" src="https://open.spotify.com/embed/track/0TK2YIli7K1leLovkQiNik?utm_source=generator"  frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        </div>
+        
+      </main>
+
+      <footer class="footer">
+        <div class="footer-izquierdo">
+          <h3>Coffee</h3>
+          <p>Disfruta de un café delicioso y un ambiente acogedor en nuestra cafetería. <br> 
+            Te ofrecemos una gran variedad de bebidas, sándwiches, ensaladas y postres. 
+            Perfecto para trabajar, estudiar o simplemente relajarse con amigos <br>
+            <br>
+            © Coffee 2024
+          
+          </p>
+  
+        </div>
+        <div class="footer-medio">
+          <h3>Sobre Nosotros</h3>
+          <ul>
+            <li><a href="nuestrasRecetas.html">Nuestras Recetas</a></li>
+            <li><a href="sobreNosotros.html">¿Donde encontrarnos?</a></li>
+            <li><a href="#">Comunidad</a></li>
+            <li><a href="login.html">Contactanos</a></li>
+          </ul>
+        </div>
+        <div class="footer-derecho">
+          <h3>Redes</h3>
+            <a href="https://www.facebook.com/"><img src="imagenes/facebook.png" alt=""></a>
+            <a href="https://x.com/?lang=es"><img src="imagenes/gorjeo.png" alt=""></a>
+            <a href="https://www.instagram.com/"><img src="imagenes/instagram.png" alt=""></a>
+            <a href="https://www.whatsapp.com/?lang=es_LA"><img src="imagenes/whatsapp.png" alt=""></a>
+        </div>
+      </footer>
+  </body>
+</html>
