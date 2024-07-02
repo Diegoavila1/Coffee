@@ -50,6 +50,7 @@ let todoLosProductos = [];
 // Añade el producto desde el evento click con el botón
 
 listaDeProductos.addEventListener('click', e => {
+  
     if (e.target.classList.contains('btn-add-cart')) {
         const producto = e.target.parentElement;
 
